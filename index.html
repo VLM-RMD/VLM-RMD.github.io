@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Human-Object Interaction with Vision-Language Model Guided Relative Movement Dynamics">
+  <meta name="keywords" content="Diffusion Policy; Manipulation; Generalization">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+
+  <!-- MathJax -->
+  <script type="text/javascript" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <!-- <link rel="stylesheet" href="./static/css/bulma-carousel.min.css"> -->
+  <!-- <link rel="stylesheet" href="./static/css/bulma-slider.min.css"> -->
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/file_1.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <!-- <script src="./static/js/bulma-carousel.min.js"></script> -->
+  <!-- <script src="./static/js/bulma-slider.min.js"></script> -->
+  <script src="./static/js/index.js"></script>
+  <title> VLM-RMD </title>
+  <style>
+    .video-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px; 
+    }
+    .video-item {
+      text-align: center; 
+      flex: 1; 
+    }
+    video {
+      width: 100%; 
+      height: auto; 
+    }
+    body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 960px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel video {
+            width: 100%;
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.2);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 50%;
+            z-index: 100;
+        }
+
+        .arrow-left {
+            left: 10px;
+        }
+
+        .arrow-right {
+            right: 10px;
+        }
+
+        .arrow:hover {
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"> Human-Object Interaction via Automatically Designed
+            <br>
+            VLM-Guided Motion Policy</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--  Main Figure -->
+<section class="hero teaser">
+  <div class="container is-max-desktop" style="max-width: 1100px;">
+    <div class="hero-body">
+      <figure class="image" style="margin-bottom: 30px;">
+        <img src="./static/figure/main_figure.png" class="image-size">
+      </figure>
+      <!-- <h2 class="subtitle has-text-centered"> -->
+      <h2 class="subtitle" style="text-align: left;">
+        Our framework automatically constructs goal states and reward functions for a variety of 
+        interaction tasks in reinforcement learning. Guided by VLMs, the resulting motion policy 
+        enables physics-based characters to perform long-horizon interactions with both static 
+        and dynamic objects.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<!--/ Abstract. -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            <strong>Human-object interaction (HOI)</strong> synthesis is crucial for applications in animation, simulation, and robotics. 
+            However, existing approaches either rely on expensive motion capture data or require manual reward engineering, 
+            limiting their scalability and generalizability. In this work, we introduce the first unified physics-based 
+            HOI framework that leverages <strong>Vision-Language Models (VLMs)</strong> to enable long-horizon interactions with diverse 
+            object types—including static, dynamic, and articulated objects. We introduce VLM-Guided <strong>Relative Movement 
+            Dynamics (RMD)</strong>, a fine-grained spatio-temporal bipartite representation that automatically constructs goal 
+            states and reward functions for reinforcement learning. By encoding structured relationships between human 
+            and object parts, RMD enables VLMs to generate semantically grounded, interaction-aware motion guidance 
+            without manual reward tuning. To support our methodology, we present Interplay, a novel dataset with thousands 
+            of long-horizon static and dynamic interaction plans. Extensive experiments demonstrate that our framework 
+            outperforms existing methods in synthesizing natural, human-like motions across both simple single-task and 
+            complex multi-task scenarios.                              
+          </p>
+        </div>
+      </div>
+    </div>
+</section> 
+
+
+<!--/ Method Overview. -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="container is-max-desktop">
+      <h2 class="title is-3">Overview</h2>
+
+          <div >
+            <figure class="image" style="margin-bottom: 30px;">
+              <img src="./static/figure/pipeline.png" class="image-size">
+            </figure>
+
+            <h2 class="subtitle" style="text-align: left; font-size: 17px;">
+              Receiving instruction and environment context as input, the VLM-Guided RMD Planner generates a 
+              multi-step interaction plan in the form of RMD. Based on this plan, our framework automatically 
+              designs both goal states and reward functions, enabling the VLM-Guided Motion Policy to execute 
+              the interaction step by step.
+            </h2>
+            </p>
+          </div>
+        <br/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--/ Method Overview. -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="container is-max-desktop">
+      <h2 class="title is-3">Detailed RMD Planner</h2>
+
+          <div >
+            <figure class="image" style="margin-bottom: 30px;">
+              <img src="./static/figure/rmd_plan.png" class="image-size">
+            </figure>
+
+            <h2 class="subtitle" style="text-align: left; font-size: 17px;">
+              The RMD Planner outputs sequential sub-step plans in a structured JSON format, enabling direct 
+              processing via Python scripts. To ensure the RMD Planner functions as intended, we utilize different 
+              sections within the prompt, each designed to support a specific functionality.
+              </h2>
+            </p>
+          </div>
+        <br/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Comparison -->
+<section class="hero teaser">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">
+            Qualitative Results in a Single-Task Scenario
+          </h2>
+          <div class="content" style="text-align: left; font-size: 17px;">
+            <p>
+              We compare our approach with <strong>UniHSI</strong>[Xiao 2024] and 
+              <strong>InterPhys</strong> [Hassan 2023]. <strong>UniHSI</strong> struggles to 
+              effectively control humanoid get-up motions, resulting in 
+              noticeable high-frequency jittering. This occurs because it 
+              models human-object interaction tasks as sequences of discrete, 
+              instantaneous, and independently solved spatial-reaching steps, 
+              neglecting the essential temporal dynamics required to coordinate 
+              movements across body parts. Similarly, <strong>InterPhys</strong> generates unnatural
+               motions during task completion, such as kicking doors or forcibly 
+               opening them with the entire body, primarily due to insufficient 
+               fine-grained spatiotemporal guidance. In contrast, our method 
+               enables stable interactions with objects and supports smooth, 
+               natural transitions between different interaction stages.
+
+            </p>
+            <div class="video-item">
+              <video autoplay muted loop>
+                <source src="./static/video/qualitative1.mp4" type="video/mp4">
+              </video>
+            </div>
+            
+            <div class="video-item">
+              <video autoplay muted loop>
+                <source src="./static/video/qualitative2.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-small">
+  <div class="hero-body">
+      <div class="container">
+          <h2 class="title is-3">Qualitative Results in a Multi-Task Scenario</h2>
+
+          <div class="carousel-container">
+              <button class="arrow arrow-left" onclick="prevVideo()">&#9664;</button>
+              
+              <div class="carousel" id="videoCarousel">
+                  <video autoplay muted loop>
+                      <source src="./static/video/demo1.mp4" type="video/mp4">
+                  </video>
+                  <video autoplay muted loop>
+                      <source src="./static/video/demo2.mp4" type="video/mp4">
+                  </video>
+                  <video autoplay muted loop>
+                      <source src="./static/video/demo3.mp4" type="video/mp4">
+                  </video>
+              </div>
+
+              <button class="arrow arrow-right" onclick="nextVideo()">&#9654;</button>
+          </div>
+      </div>
+  </div>
+</section>
+
+<script>
+  let currentIndex = 0;
+  const videos = document.querySelectorAll("#videoCarousel video");
+  const carousel = document.getElementById("videoCarousel");
+
+  function updateCarousel() {
+      const offset = -currentIndex * 100;
+      carousel.style.transform = `translateX(${offset}%)`;
+  }
+
+  function nextVideo() {
+      currentIndex = (currentIndex + 1) % videos.length;
+      updateCarousel();
+  }
+
+  function prevVideo() {
+      currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+      updateCarousel();
+  }
+</script>
+
+
+<footer class="footer">
+    <div class="columns is-centered">
+        <div class="content">
+          <p>
+            This website is borrowed from  <a href="https://nerfies.github.io/">Nerfies</a>.
+          </p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
