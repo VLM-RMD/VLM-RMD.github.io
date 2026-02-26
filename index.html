@@ -106,11 +106,32 @@
         .arrow:hover {
             background-color: rgba(0, 0, 0, 0.4);
         }
+
+        .progress-wrap {
+          max-width: 960px;
+          margin: 10px auto 0 auto;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .progress-wrap input[type="range"] {
+          width: 100%;
+          cursor: pointer;
+        }
+
+        .time-label {
+          font-size: 14px;
+          min-width: 90px;
+          text-align: right;
+          opacity: 0.8;
+          font-variant-numeric: tabular-nums;
+        }
   </style>
 </head>
 <body>
 
-<section class="hero">
+<!-- <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
@@ -122,7 +143,106 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">
+                Human-Object Interaction via Automatically Designed
+                <br> 
+                VLM-Guided Motion Policy</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                Zekai Deng<sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://shiye21.github.io/">Ye Shi</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                Kaiyang Ji<sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://xulan.github.io/">Lan Xu</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://shaoli-huang.github.io/">Shaoli Huang</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://faculty.sist.shanghaitech.edu.cn/faculty/wangjingya/">Jingya Wang</a><sup>1,*</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>ShanghaiTech University,</span>
+              <span class="author-block"><sup>2</sup>AgiBot,</span>
+              <br>
+              <span class="author-block"><sup>*</sup>Corresponding Author</span>
+            </div>
+            <!-- <div>( * denotes equal contribution. )</div> -->
+            <div class="is-size-3">ICLR 2026</div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2503.18349"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2503.18349" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Video Link. -->
+                <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=Dyr5wsTE48Y"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://vlm-rmd.github.io/"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code & Dataset (Coming Soon)</span>
+                  </a>
+                </span>
+                <!-- Dataset Link. -->
+                <!-- <span class="link-block">
+                  <a href="https://github.com/liangxuy/ReGenNet"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="far fa-images"></i>
+                    </span>
+                    <span>Annotations</span>
+                  </a>
+                </span> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Authors -->
+
 
 <!--  Main Figure -->
 <section class="hero teaser">
@@ -267,51 +387,150 @@
 </section>
 
 
-<section class="hero is-small">
-  <div class="hero-body">
-      <div class="container">
-          <h2 class="title is-3">Qualitative Results in a Multi-Task Scenario</h2>
+<div class="carousel-container">
+  <button class="arrow arrow-left" onclick="prevVideo()">&#9664;</button>
+  <h2 class="title is-3">Qualitative Results in a Multi-Task Scenario</h2>
 
-          <div class="carousel-container">
-              <button class="arrow arrow-left" onclick="prevVideo()">&#9664;</button>
-              
-              <div class="carousel" id="videoCarousel">
-                  <video autoplay muted loop>
-                      <source src="./static/video/demo1.mp4" type="video/mp4">
-                  </video>
-                  <video autoplay muted loop>
-                      <source src="./static/video/demo2.mp4" type="video/mp4">
-                  </video>
-                  <video autoplay muted loop>
-                      <source src="./static/video/demo3.mp4" type="video/mp4">
-                  </video>
-              </div>
+  <div class="carousel" id="videoCarousel">
+    <video autoplay muted loop playsinline preload="metadata">
+      <source src="./static/video/demo1.mp4" type="video/mp4">
+    </video>
+    <video autoplay muted loop playsinline preload="metadata">
+      <source src="./static/video/demo2.mp4" type="video/mp4">
+    </video>
+    <video autoplay muted loop playsinline preload="metadata">
+      <source src="./static/video/demo3.mp4" type="video/mp4">
+    </video>
+  </div>
 
-              <button class="arrow arrow-right" onclick="nextVideo()">&#9654;</button>
-          </div>
-      </div>
+  <button class="arrow arrow-right" onclick="nextVideo()">&#9654;</button>
+</div>
+
+<div class="progress-wrap">
+  <input id="videoProgress" type="range" min="0" max="1000" value="0" step="1">
+  <span id="timeLabel" class="time-label">0:00 / 0:00</span>
+</div>
+
+
+<!-- citation -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Citation</h2>
+    <div style="position: relative; text-align: left;">
+      <pre style="text-align: left; margin-left: 0; margin-right: auto;"><code id="bibtex-code">
+      @inproceedings{deng2026humanobject,
+        title={Human-Object Interaction via Automatically Designed {VLM}-Guided Motion Policy},
+        author={Zekai Deng and Ye Shi and Kaiyang Ji and Lan Xu and Shaoli Huang and Jingya Wang},
+        booktitle={The Fourteenth International Conference on Learning Representations},
+        year={2026}
+      }
+</code></pre>
+      <button onclick="copyToClipboard()" style="position: absolute; top: 5px; right: 5px; background: none; border: none; cursor: pointer;">
+        <i class="fa fa-paste" aria-hidden="true"></i>
+      </button>
+    </div>
   </div>
 </section>
 
 <script>
   let currentIndex = 0;
-  const videos = document.querySelectorAll("#videoCarousel video");
   const carousel = document.getElementById("videoCarousel");
+  const videos = Array.from(document.querySelectorAll("#videoCarousel video"));
+
+  const progress = document.getElementById("videoProgress");
+  const timeLabel = document.getElementById("timeLabel");
+
+  let rafId = null;
+  let isSeeking = false;
+
+  function formatTime(sec) {
+    if (!isFinite(sec)) return "0:00";
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return `${m}:${String(s).padStart(2, "0")}`;
+  }
+
+  function getActiveVideo() {
+    return videos[currentIndex];
+  }
 
   function updateCarousel() {
-      const offset = -currentIndex * 100;
-      carousel.style.transform = `translateX(${offset}%)`;
+    const offset = -currentIndex * 100;
+    carousel.style.transform = `translateX(${offset}%)`;
+
+    // 切换时：暂停其他视频，只让当前视频播放（避免后台也在跑）
+    videos.forEach((v, i) => {
+      if (i === currentIndex) {
+        v.play().catch(() => {});
+      } else {
+        v.pause();
+      }
+    });
+
+    // 更新一次进度显示
+    updateProgressUI();
   }
 
   function nextVideo() {
-      currentIndex = (currentIndex + 1) % videos.length;
-      updateCarousel();
+    currentIndex = (currentIndex + 1) % videos.length;
+    updateCarousel();
   }
 
   function prevVideo() {
-      currentIndex = (currentIndex - 1 + videos.length) % videos.length;
-      updateCarousel();
+    currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+    updateCarousel();
   }
+
+  function updateProgressUI() {
+    const v = getActiveVideo();
+    const dur = v.duration || 0;
+    const cur = v.currentTime || 0;
+
+    // range 用 0~1000，避免 duration 很短时拖动不顺
+    if (!isSeeking && dur > 0) {
+      progress.value = Math.round((cur / dur) * 1000);
+    }
+
+    timeLabel.textContent = `${formatTime(cur)} / ${formatTime(dur)}`;
+  }
+
+  function tick() {
+    updateProgressUI();
+    rafId = requestAnimationFrame(tick);
+  }
+
+  // 拖动进度条 -> seek
+  progress.addEventListener("input", () => {
+    const v = getActiveVideo();
+    const dur = v.duration || 0;
+    if (dur <= 0) return;
+
+    isSeeking = true;
+    const target = (progress.value / 1000) * dur;
+    v.currentTime = target;
+    updateProgressUI();
+  });
+
+  progress.addEventListener("change", () => {
+    isSeeking = false;
+  });
+
+  // 初始化：只播放第一个
+  videos.forEach((v, i) => {
+    if (i !== 0) v.pause();
+  });
+
+  // 等元数据加载后，能拿到 duration
+  videos.forEach(v => {
+    v.addEventListener("loadedmetadata", updateProgressUI);
+    v.addEventListener("timeupdate", () => {
+      // timeupdate 频率不高，但结合 RAF 能更丝滑
+      if (!rafId) tick();
+    });
+  });
+
+  updateCarousel();
+  tick();
 </script>
 
 
@@ -324,6 +543,5 @@
         </div>
     </div>
 </footer>
-
 </body>
 </html>
